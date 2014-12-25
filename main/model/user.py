@@ -72,3 +72,10 @@ class User(model.Base):
         cls.query(), email=email, verified=True, limit=2,
       )
     return not user_keys or self_key in user_keys and not user_keys[1:]
+
+  def get_pay_dbs(self, **kwargs):
+    return model.Pay.get_dbs(
+        ancestor=self.key,
+        order=util.param('order') or 'date_for',
+        **kwargs
+      )

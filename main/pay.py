@@ -56,7 +56,7 @@ def pay_update(pay_id):
   if form.validate_on_submit():
     form.populate_obj(pay_db)
     pay_db.put()
-    return flask.redirect(flask.url_for('pay_list', order='-modified'))
+    return flask.redirect(flask.url_for('pay_list'))
   return flask.render_template(
       'pay/pay_update.html',
       html_class='pay-update',
@@ -72,7 +72,7 @@ def pay_update(pay_id):
 @app.route('/pay/')
 @auth.login_required
 def pay_list():
-  pay_dbs, pay_cursor = model.Pay.get_dbs(ancestor=auth.current_user_key())
+  pay_dbs, pay_cursor = auth.current_user_db().get_pay_dbs()
 
   return flask.render_template(
       'pay/pay_list.html',
