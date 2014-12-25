@@ -35,6 +35,7 @@ class ConfigUpdateForm(wtf.Form):
   anonymous_recaptcha = wtforms.BooleanField('Use reCAPTCHA in forms for unauthorized users')
   brand_name = wtforms.StringField('Brand Name', [wtforms.validators.required()], filters=[util.strip_filter])
   check_unique_email = wtforms.BooleanField('Check for uniqueness of the verified emails')
+  currency = wtforms.StringField('Currency', [wtforms.validators.required()], filters=[util.strip_filter])
   email_authentication = wtforms.BooleanField('Email authentication for sign in/sign up')
   feedback_email = wtforms.StringField('Feedback Email', [wtforms.validators.optional(), wtforms.validators.email()], filters=[util.email_filter])
   flask_secret_key = wtforms.StringField('Flask Secret Key', [wtforms.validators.optional()], filters=[util.strip_filter])

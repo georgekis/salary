@@ -18,6 +18,7 @@ class Config(model.Base, model.ConfigAuth):
   anonymous_recaptcha = ndb.BooleanProperty(default=False)
   brand_name = ndb.StringProperty(default=config.APPLICATION_ID)
   check_unique_email = ndb.BooleanProperty(default=True)
+  currency = ndb.StringProperty(default=u'€')
   email_authentication = ndb.BooleanProperty(default=False)
   feedback_email = ndb.StringProperty(default='')
   flask_secret_key = ndb.StringProperty(default=util.uuid())

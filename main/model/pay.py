@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 from google.appengine.ext import ndb
 
+import config
 import model
 
 
@@ -17,4 +18,4 @@ class Pay(model.Base):
 
   @ndb.ComputedProperty
   def amount_format(self):
-    return u'€ %0.2f' % (self.amount)
+    return u'%s %0.2f' % (config.CONFIG_DB.currency, self.amount)
