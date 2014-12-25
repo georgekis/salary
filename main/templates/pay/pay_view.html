@@ -1,0 +1,15 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <p>{{pay_db.name}}</p>
+  <p>{{pay_db.date_for}}</p>
+  <p>{{pay_db.date_paid}}</p>
+  <p>{{pay_db.amount}}</p>
+  <hr>
+  <p>
+    <a href="{{url_for('pay_list')}}">Back</a>
+  </p>
+# endblock

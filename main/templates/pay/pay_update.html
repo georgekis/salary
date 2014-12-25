@@ -1,0 +1,29 @@
+# extends 'base.html'
+# import 'macro/forms.html' as forms
+
+# block content
+<div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <form method="POST" action="." novalidate>
+        <fieldset>
+          {{form.csrf_token}}
+          {{forms.text_field(form.code, autofocus=True)}}
+          {{forms.text_field(form.name)}}
+          {{forms.date_field(form.date_for)}}
+          {{forms.date_field(form.date_paid)}}
+          {{forms.number_field(form.amount)}}
+          <button type="submit" class="btn btn-primary btn-block btn-loading" data-loading-text="Please wait..">
+            # if pay_db
+              Update
+            # else
+              Create
+            # endif
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+# endblock

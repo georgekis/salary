@@ -26,6 +26,7 @@ import auth
 import model
 import profile
 import task
+import pay
 import test
 
 if config.DEVELOPMENT:
