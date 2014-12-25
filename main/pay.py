@@ -25,15 +25,16 @@ def pay_create():
   form = PayUpdateForm()
   if form.validate_on_submit():
     pay_db  = model.Pay(
-        user_key=auth.current_user_key(),
+        parent=auth.current_user_key(),
         name=form.name.data,
         code=form.code.data,
         date_for=form.date_for.data,
         date_paid=form.date_paid.data,
+        amount=form.amount.data,
       )
     pay_db.put()
     flask.flash('New pay was successfully created!', category='success')
-    return flask.redirect(flask.url_for('pay_list', order='-date_for'))
+    return flask.redirect(flask.url_for('pay_list', order='date_for'))
   return flask.render_template(
       'pay/pay_update.html',
       html_class='pay-create',
@@ -48,8 +49,8 @@ def pay_create():
 @app.route('/pay/<int:pay_id>/update/', methods=['GET', 'POST'])
 @auth.login_required
 def pay_update(pay_id):
-  pay_db = model.Pay.get_by_id(pay_id)
-  if not pay_db or pay_db.user_key != auth.current_user_key():
+  pay_db = model.Pay.get_by_id(pay_id, parent=auth.current_user_key())
+  if not pay_db or pay_db.key.parent() != auth.current_user_key():
     flask.abort(404)
   form = PayUpdateForm(obj=pay_db)
   if form.validate_on_submit():
@@ -71,9 +72,7 @@ def pay_update(pay_id):
 @app.route('/pay/')
 @auth.login_required
 def pay_list():
-  pay_dbs, pay_cursor = model.Pay.get_dbs(
-      user_key=auth.current_user_key(),
-    )
+  pay_dbs, pay_cursor = model.Pay.get_dbs(ancestor=auth.current_user_key())
 
   return flask.render_template(
       'pay/pay_list.html',

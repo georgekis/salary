@@ -9,7 +9,6 @@ import model
 
 
 class Pay(model.Base):
-  user_key = ndb.KeyProperty(kind=model.User)
   name = ndb.StringProperty(required=True)
   date_for = ndb.DateProperty(required=True)
   date_paid = ndb.DateProperty(required=True)
