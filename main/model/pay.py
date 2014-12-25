@@ -14,3 +14,7 @@ class Pay(model.Base):
   date_paid = ndb.DateProperty(required=True)
   code = ndb.StringProperty(required=True)
   amount = ndb.FloatProperty(default=0.0)
+
+  @ndb.ComputedProperty
+  def amount_format(self):
+    return u'€ %0.2f' % (self.amount)
