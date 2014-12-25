@@ -9,10 +9,10 @@ import model
 
 
 class Pay(model.Base):
-  name = ndb.StringProperty(required=True)
-  date_for = ndb.DateProperty(required=True)
-  date_paid = ndb.DateProperty(required=True)
-  code = ndb.StringProperty(required=True)
+  name = ndb.StringProperty(default='')
+  date_for = ndb.DateProperty(auto_now_add=True)
+  date_paid = ndb.DateProperty(auto_now_add=True)
+  code = ndb.StringProperty(default='')
   amount = ndb.FloatProperty(default=0.0)
 
   @ndb.ComputedProperty
