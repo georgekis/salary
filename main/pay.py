@@ -40,6 +40,7 @@ def pay_update(pay_id=0):
       html_class='pay-update',
       title=pay_db.name or 'Create Pay',
       form=form,
+      pay_db=pay_db,
     )
 
 
