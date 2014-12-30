@@ -16,7 +16,7 @@
           {{forms.date_field(form.date_paid)}}
           {{forms.number_field(form.amount)}}
           <button type="submit" class="btn btn-primary btn-block btn-loading" data-loading-text="Please wait..">
-            # if pay_db
+            # if pay_db.key.id()
               Update
             # else
               Create
