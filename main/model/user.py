@@ -76,6 +76,6 @@ class User(model.Base):
   def get_pay_dbs(self, **kwargs):
     return model.Pay.get_dbs(
         ancestor=self.key,
-        order=util.param('order') or '-date_for',
+        order=util.param('order') or '-date_for,name',
         **kwargs
       )

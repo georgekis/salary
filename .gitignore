@@ -13,4 +13,5 @@ main/static/dst
 main/static/ext
 main/static/min
 node_modules
+npm-debug.log
 temp/
