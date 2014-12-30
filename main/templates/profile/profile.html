@@ -4,7 +4,11 @@
 
 # block profile_content
   <h3 title="Username"><span class="fa fa-at fa-fw"></span>Username: {{user_db.username}}</h3>
-  <h3 title="Birthdate"><span class="fa fa-birthday-cake"></span> DOB: {{user_db.birthdate}}</h3>
+  # if user_db.birthdate
+    <h3 title="Birthdate"><span class="fa fa-birthday-cake"></span> DOB: {{user_db.birthdate.strftime('%d %b %Y')}}</h3>
+  # else
+  <h3 title="Birthdate"><span class="fa fa-birthday-cake"></span> DOB: </h3>
+  # endif
   <h3 title="AMKA"><span class="fa fa-credit-card"></span> AMKA: {{user_db.social_security_number}}</h3>
   <h3 title="Email">
     <span class="fa fa-envelope-o fa-fw"></span> Email: {{user_db.email}}

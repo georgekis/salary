@@ -43,11 +43,11 @@ class ProfileUpdateForm(wtf.Form):
     )
   birthdate = wtforms.DateField(
       'Birthdate',
-      [wtforms.validators.required('optional')],
+      [wtforms.validators.optional()],
     )
   social_security_number = wtforms.StringField(
     'AMKA',
-    [wtforms.validators.required('optional')],
+    [wtforms.validators.optional()],
     )
   email = wtforms.StringField(
       'Email',
