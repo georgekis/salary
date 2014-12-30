@@ -41,6 +41,14 @@ class ProfileUpdateForm(wtf.Form):
       'Name',
       [wtforms.validators.required()], filters=[util.strip_filter],
     )
+  birthdate = wtforms.DateField(
+      'Birthdate',
+      [wtforms.validators.required('optional')],
+    )
+  social_security_number = wtforms.StringField(
+    'AMKA',
+    [wtforms.validators.required('optional')],
+    )
   email = wtforms.StringField(
       'Email',
       [wtforms.validators.optional(), wtforms.validators.email()],

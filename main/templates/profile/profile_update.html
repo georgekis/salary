@@ -5,6 +5,8 @@
   <form method="POST" action="." novalidate>
     {{form.csrf_token}}
     {{forms.text_field(form.name, autofocus=True)}}
+    {{forms.date_field(form.birthdate)}}
+    {{forms.text_field(form.social_security_number)}}
     # include 'user/user_email_field.html'
 
     <div class="controls">
