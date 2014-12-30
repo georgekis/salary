@@ -4,8 +4,8 @@
 
 # block profile_content
   <h3 title="Username"><span class="fa fa-at fa-fw"></span> {{user_db.username}}</h3>
-  <h3 title="Birthdate"><span class="fa fa-birthday-cake"></span> {{user_db.birthdate.strftime('%d %b %Y') if user_db.birthdate else ''}}</h3>
-  <h3 title="Social Security Number"><span class="fa fa-credit-card"></span> {{user_db.social_security_number if user_db.social_security_number else ''}}</h3>
+  <h3 title="Birthdate"><span class="fa fa-birthday-cake fa-fw"></span> {{user_db.birthdate.strftime('%d %b %Y') if user_db.birthdate else ''}}</h3>
+  <h3 title="Social Security Number"><span class="fa fa-credit-card fa-fw"></span> {{user_db.social_security_number if user_db.social_security_number else ''}}</h3>
   <h3 title="Email">
     <span class="fa fa-envelope-o fa-fw"></span> {{user_db.email}}
     # if config.CONFIG_DB.verify_email and user_db.email and user_db.verified
