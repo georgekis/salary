@@ -46,7 +46,7 @@ class ProfileUpdateForm(wtf.Form):
       [wtforms.validators.optional()],
     )
   social_security_number = wtforms.StringField(
-    'AMKA',
+    'Social Security Number',
     [wtforms.validators.optional()],
     )
   email = wtforms.StringField(
