@@ -117,9 +117,7 @@
               <time birthdate="{{user_db.birthdate}}">
                 {{user_db.birthdate.strftime('%d %b %Y') if user_db.birthdate else ''}}
               </time><br>
-              <time age="{{user_db.age}}">
-                {{user_db.age if user_db.birthdate else ''}}
-              </time>
+              {{'age %d' % user_db.age if user_db.age else ''}}
             </td>
             <td>
               <time datetime="{{user_db.modified}}">
