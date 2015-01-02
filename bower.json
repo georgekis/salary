@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap": "~3",
     "bootstrap-sweetalert": "~0",
+    "bootswatch": "~3",
     "font-awesome": "~4",
     "jquery": "~2",
     "moment": "~2",
@@ -14,6 +15,9 @@
     },
     "bootstrap-sweetalert": {
       "main": ["lib/*.less", "lib/sweet-alert.js"]
+    },
+    "bootswatch": {
+      "main": ["**/*.less"]
     },
     "font-awesome": {
       "main": ["less/*", "fonts/*"]
