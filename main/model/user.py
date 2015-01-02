@@ -2,6 +2,7 @@
 
 from __future__ import absolute_import
 
+from datetime import date
 import hashlib
 
 from google.appengine.ext import ndb
@@ -35,9 +36,18 @@ class User(model.Base):
       }
   avatar_url = property(avatar_url_size)
 
+  @ndb.ComputedProperty
+  def age(self):
+    if self.birthdate:
+      bn = self.birthdate
+      td = date.today()
+      return td.year - bn.year - ((td.month, td.day) < (bn.month, bn.day))
+    return None
+
   _PROPERTIES = model.Base._PROPERTIES.union({
       'active',
       'admin',
+      'age',
       'auth_ids',
       'avatar_url',
       'email',
