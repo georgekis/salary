@@ -86,7 +86,7 @@
         <tr class="text-nowrap">
           <th class="col-xs-5"><input id="select-all" type="checkbox"> {{utils.order_by_link('name', 'Name')}}</th>
           <th class="col-xs-3">{{utils.order_by_link('email', 'Email')}}<br><small>{{utils.order_by_link('username', 'Username')}}</small></th>
-          <th class="col-xs-3">{{utils.order_by_link('birthdate', 'Birthdate')}}<br><small>{{utils.order_by_link('age', 'Age')}}</small></th>
+          <th class="col-xs-3">{{utils.order_by_link('birthdate', 'Birthdate')}}<br></th>
           <th class="col-xs-2">{{utils.order_by_link('modified', 'Modified')}}<br><small>{{utils.order_by_link('created', 'Created')}}</small></th>
           <th class="col-xs-2">Permissions</th>
           <th class="text-center" title="Accounts"><i class="fa fa-key"></i></th>
@@ -117,9 +117,6 @@
               <time birthdate="{{user_db.birthdate}}">
                 {{user_db.birthdate.strftime('%d %b %Y') if user_db.birthdate else ''}}
               </time><br>
-              <time class="text-success small" datetime="{{user_db.birthdate}}">
-                {{user_db.birthdate.strftime('%Y-%m-%d') if user_db.birthdate else ''}}
-              </time>
             </td>
             <td>
               <time datetime="{{user_db.modified}}">
