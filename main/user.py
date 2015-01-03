@@ -63,6 +63,7 @@ class UserUpdateForm(wtf.Form):
     )
   birthdate = wtforms.DateField(
     'Birthdate',
+    [wtforms.validators.optional()],
     )
   admin = wtforms.BooleanField('Admin')
   active = wtforms.BooleanField('Active')
