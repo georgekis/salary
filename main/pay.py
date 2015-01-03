@@ -59,3 +59,20 @@ def pay_list():
       pay_dbs=pay_dbs,
       next_url=util.generate_next_url(pay_cursor),
     )
+
+
+###############################################################################
+# Admin Pay List
+###############################################################################
+@app.route('/admin/pay/')
+@auth.admin_required
+def admin_pay_list():
+  pay_dbs, pay_cursor = model.Pay.get_dbs()
+
+  return flask.render_template(
+      'admin/pay_list.html',
+      html_class='admin-pay-list',
+      title='Pay List',
+      pay_dbs=pay_dbs,
+      next_url=util.generate_next_url(pay_cursor),
+    )

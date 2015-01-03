@@ -1,0 +1,37 @@
+# extends 'admin/admin_base.html'
+# import 'macro/utils.html' as utils
+
+# block admin_content
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>{{utils.order_by_link('code', 'Code')}}</th>
+        <th>{{utils.order_by_link('name', 'Name')}}</th>
+        <th>{{utils.order_by_link('date_for', 'Date For')}}</th>
+        <th>{{utils.order_by_link('date_paid', 'Date Paid')}}</th>
+        <th class="text-right">{{utils.order_by_link('amount', 'Amount')}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      # for pay_db in pay_dbs
+        <tr>
+          # set user_db = pay_db.key.parent().get()
+          <td>
+            <img src="{{user_db.avatar_url_size(36)}}" width="18">
+            {{user_db.name}}
+          </td>
+          <td>
+            <a href="{{url_for('pay_update', pay_id=pay_db.key.id())}}">
+              {{pay_db.code}}
+            </a>
+          </td>
+          <td>{{pay_db.name}}</td>
+          <td>{{pay_db.date_for.strftime('%b %Y')}}</td>
+          <td>{{pay_db.date_paid.strftime('%d %b %Y')}}</td>
+          <td class="text-right">{{pay_db.amount_format}}</td>
+        </tr>
+      #endfor
+    </tbody>
+  </table>
+# endblock
