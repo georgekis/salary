@@ -61,6 +61,9 @@ class UserUpdateForm(wtf.Form):
       [wtforms.validators.optional(), wtforms.validators.email()],
       filters=[util.email_filter],
     )
+  birthdate = wtforms.DateField(
+    'Birthdate',
+    )
   admin = wtforms.BooleanField('Admin')
   active = wtforms.BooleanField('Active')
   verified = wtforms.BooleanField('Verified')
