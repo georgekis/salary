@@ -62,8 +62,8 @@ class UserUpdateForm(wtf.Form):
       filters=[util.email_filter],
     )
   birthdate = wtforms.DateField(
-    'Birthdate',
-    [wtforms.validators.optional()],
+      'Birthdate',
+      [wtforms.validators.optional()],
     )
   admin = wtforms.BooleanField('Admin')
   active = wtforms.BooleanField('Active')
