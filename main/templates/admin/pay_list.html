@@ -18,14 +18,12 @@
         <tr>
           # set user_db = pay_db.key.parent().get()
           <td>
-            <img src="{{user_db.avatar_url_size(36)}}" width="18">
-            {{user_db.name}}
+            # if user_db
+              <img src="{{user_db.avatar_url_size(36)}}" width="18">
+              {{user_db.name}}
+            # endif
           </td>
-          <td>
-            <a href="{{url_for('pay_update', pay_id=pay_db.key.id())}}">
-              {{pay_db.code}}
-            </a>
-          </td>
+          <td>{{pay_db.code}}</td>
           <td>{{pay_db.name}}</td>
           <td>{{pay_db.date_for.strftime('%b %Y')}}</td>
           <td>{{pay_db.date_paid.strftime('%d %b %Y')}}</td>
