@@ -7,7 +7,7 @@
   </div>
   <table class="table table-bordered">
     <thead>
-      <tr>
+      <tr class="text-nowrap">
         <th>{{utils.order_by_link('code', 'Code')}}</th>
         <th>{{utils.order_by_link('name', 'Name')}}</th>
         <th>{{utils.order_by_link('date_for', 'Date For')}}</th>
@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       # for pay_db in pay_dbs
-        <tr class="{{'active' if pay_db.amount >= 0 else 'warning'}}">
+        <tr class="{{'positive' if pay_db.amount >= 0 else 'negative'}}">
           <td>
             <a href="{{url_for('pay_update', pay_id=pay_db.key.id())}}">
               {{pay_db.code}}

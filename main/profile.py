@@ -38,23 +38,23 @@ def profile():
 ###############################################################################
 class ProfileUpdateForm(wtf.Form):
   name = wtforms.StringField(
-      'Name',
+    'Name',
       [wtforms.validators.required()], filters=[util.strip_filter],
     )
   birthdate = wtforms.DateField(
-      'Birthdate',
+    'Birthdate',
       [wtforms.validators.optional()],
     )
   social_security_number = wtforms.StringField(
     'Social Security Number',
-    [wtforms.validators.optional()],
+      [wtforms.validators.optional()],
     )
   job_title = wtforms.StringField(
     'Job Title',
-    [wtforms.validators.optional()],
+      [wtforms.validators.optional()],
     )
   email = wtforms.StringField(
-      'Email',
+    'Email',
       [wtforms.validators.optional(), wtforms.validators.email()],
       filters=[util.email_filter],
     )
