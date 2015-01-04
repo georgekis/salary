@@ -25,6 +25,7 @@ class User(model.Base):
   password_hash = ndb.StringProperty(default='')
   birthdate = ndb.DateProperty()
   social_security_number = ndb.StringProperty(default='')
+  job_title = ndb.StringProperty(default='')
 
   def has_permission(self, perm):
     return self.admin or perm in self.permissions

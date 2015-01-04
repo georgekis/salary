@@ -49,6 +49,10 @@ class ProfileUpdateForm(wtf.Form):
     'Social Security Number',
     [wtforms.validators.optional()],
     )
+  job_title = wtforms.StringField(
+    'Job Title',
+    [wtforms.validators.optional()],
+    )
   email = wtforms.StringField(
       'Email',
       [wtforms.validators.optional(), wtforms.validators.email()],
