@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       # for pay_db in pay_dbs
-        <tr>
+        <tr class="{{'active' if pay_db.amount >= 0 else 'warning'}}">
           <td>
             <a href="{{url_for('pay_update', pay_id=pay_db.key.id())}}">
               {{pay_db.code}}

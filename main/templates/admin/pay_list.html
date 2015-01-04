@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       # for pay_db in pay_dbs
-        <tr>
+        <tr class="{{'active' if pay_db.amount >= 0 else 'warning'}}">
           # set user_db = pay_db.key.parent().get()
           <td>
             # if user_db
