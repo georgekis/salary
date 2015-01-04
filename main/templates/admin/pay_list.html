@@ -2,7 +2,7 @@
 # import 'macro/utils.html' as utils
 
 # block admin_content
-  <table class="table table-bordered">
+  <table class="table table-pay">
     <thead>
       <tr>
         <th>User</th>
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       # for pay_db in pay_dbs
-        <tr class="{{'active' if pay_db.amount >= 0 else 'warning'}}">
+        <tr class="{{'positive' if pay_db.amount >= 0 else 'negative'}}">
           # set user_db = pay_db.key.parent().get()
           <td>
             # if user_db
