@@ -23,6 +23,16 @@ class Pay(model.Base):
   def is_positive(self):
     return self.amount >= 0
 
+  _PROPERTIES = model.Base._PROPERTIES.union({
+      'amount',
+      'amount_format',
+      'code',
+      'date_for',
+      'date_paid',
+      'is_positive',
+      'name',
+    })
+
   @classmethod
   def get_dbs(cls, is_positive=None, **kwargs):
     return super(Pay, cls).get_dbs(

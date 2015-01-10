@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from flask.ext import wtf
+from google.appengine.ext import ndb
 import flask
 import wtforms
 
@@ -122,3 +123,16 @@ def admin_auth():
       form=form,
       has_json=True,
     )
+
+
+@app.route('/_s/admin/pay/update/')
+@auth.admin_required
+def admin_pay_upgrade_service():
+  pay_dbs, pay_cursor = util.get_dbs(
+      model.Pay.query(),
+      limit=util.param('limit', int),
+      cursor=util.param('cursor'),
+      order=util.param('order'),
+    )
+  ndb.put_multi(pay_dbs)
+  return util.jsonify_model_dbs(pay_dbs, pay_cursor)
