@@ -6,7 +6,7 @@ from google.appengine.ext import ndb
 
 import config
 import model
-
+import util
 
 class Pay(model.Base):
   name = ndb.StringProperty(default='')
@@ -18,3 +18,14 @@ class Pay(model.Base):
   @ndb.ComputedProperty
   def amount_format(self):
     return u'%s %0.2f' % (config.CONFIG_DB.currency, self.amount)
+
+  @ndb.ComputedProperty
+  def is_positive(self):
+    return self.amount >= 0
+
+  @classmethod
+  def get_dbs(cls, is_positive=None, **kwargs):
+    return super(Pay, cls).get_dbs(
+        is_positive=is_positive or util.param('is_positive', bool),
+        **kwargs
+      )
