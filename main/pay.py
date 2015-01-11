@@ -69,10 +69,14 @@ def pay_list():
 ###############################################################################
 # Admin Pay List
 ###############################################################################
+@app.route('/_s/admin/pay/')
 @app.route('/admin/pay/')
 @auth.admin_required
 def admin_pay_list():
   pay_dbs, pay_cursor = model.Pay.get_dbs()
+
+  if flask.request.path.startswith('/_s/'):
+    return util.jsonify_model_dbs(pay_dbs, pay_cursor)
 
   return flask.render_template(
       'admin/pay_list.html',
@@ -80,4 +84,5 @@ def admin_pay_list():
       title='Pay List',
       pay_dbs=pay_dbs,
       next_url=util.generate_next_url(pay_cursor),
+      has_json=True,
     )
