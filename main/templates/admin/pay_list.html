@@ -21,7 +21,12 @@
     </div>
   </div>
 
-  <table class="table table-bordered table-pay">
+  <div class="alert alert-warning alert-dismissable {{'hide' if pay_dbs|count > 0}}">
+    <a href="{{url_for('admin_pay_list')}}" class="close" title="Remove all filters">&times;</a>
+    There are no data matching the filters.
+  </div>
+
+  <table class="table table-bordered table-pay {{'hide' if pay_dbs|count == 0}}">
     <thead>
       <tr>
         <th>User</th>
