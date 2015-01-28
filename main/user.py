@@ -21,8 +21,8 @@ from main import app
 ###############################################################################
 # User List
 ###############################################################################
-@app.route('/_s/user/', endpoint='user_list_service')
-@app.route('/user/')
+@app.route('/_s/admin/user/', endpoint='user_list_service')
+@app.route('/admin/user/')
 @auth.admin_required
 def user_list():
   user_dbs, user_cursor = model.User.get_dbs(email=util.param('email'))
@@ -86,7 +86,7 @@ class UserUpdateForm(wtf.Form):
     UserUpdateForm._permission_choices.add(permission)
 
 
-@app.route('/user/<int:user_id>/update/', methods=['GET', 'POST'])
+@app.route('/admin/user/<int:user_id>/update/', methods=['GET', 'POST'])
 @auth.admin_required
 def user_update(user_id):
   user_db = model.User.get_by_id(user_id)
@@ -150,7 +150,7 @@ class UserForgotForm(wtf.Form):
       [wtforms.validators.required(), wtforms.validators.email()],
       filters=[util.email_filter],
     )
-  recaptcha = wtf.RecaptchaField('Are you human?')
+  recaptcha = wtf.RecaptchaField()
 
 
 @app.route('/user/forgot/', methods=['GET', 'POST'])
@@ -276,7 +276,7 @@ def user_activate(token):
 ###############################################################################
 # User Delete
 ###############################################################################
-@app.route('/_s/user/delete/', methods=['DELETE'])
+@app.route('/_s/admin/user/delete/', methods=['DELETE'])
 @auth.admin_required
 def user_delete_service():
   user_keys = util.param('user_keys', list)
@@ -311,8 +311,8 @@ class UserMergeForm(wtf.Form):
     )
 
 
-@app.route('/_s/user/merge/')
-@app.route('/user/merge/', methods=['GET', 'POST'])
+@app.route('/_s/admin/user/merge/')
+@app.route('/admin/user/merge/', methods=['GET', 'POST'])
 @auth.admin_required
 def user_merge():
   user_keys = util.param('user_keys', list)
