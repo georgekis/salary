@@ -36,6 +36,7 @@
     # else
       {{field(class='form-control', **kwargs)}}
     # endif
+    {{field_errors(field)}}
     {{field_description(field)}}
   </div>
 # endmacro
@@ -184,4 +185,13 @@
       </div>
     </div>
   </div>
+# endmacro
+
+
+# macro data_loading_text(text='Please wait..', icon='fa fa-spin fa-spinner')
+  # if icon
+    data-loading-text="<span class='{{icon}}'></span> {{text}}"
+  # else
+    data-loading-text="{{text}}"
+  # endif
 # endmacro

@@ -20,14 +20,27 @@ app.jinja_env.globals.update(
     update_query_argument=util.update_query_argument,
   )
 
-import user
-import admin
+from control import user
+from control import admin
+from control import profile
+from control import test
 import auth
 import model
-import profile
 import task
+<<<<<<< HEAD
 import pay
 import test
+=======
+
+
+from api import helpers as restful
+api = restful.Api(app)
+
+from api.v1 import auth_api
+from api.v1 import config_api
+from api.v1 import user_api
+
+>>>>>>> bfae23693b77e6d849f92f2a95ccd66972566def
 
 if config.DEVELOPMENT:
   from werkzeug import debug
@@ -123,14 +136,8 @@ def error_handler(e):
     e.code = 500
     e.name = 'Internal Server Error'
 
-  if flask.request.path.startswith('/_s/'):
-    return util.jsonpify({
-        'status': 'error',
-        'error_code': e.code,
-        'error_name': util.slugify(e.name),
-        'error_message': e.name,
-        'error_class': e.__class__.__name__,
-      }), e.code
+  if flask.request.path.startswith('/api/'):
+    return api.handle_error(e)
 
   return flask.render_template(
       'error.html',
