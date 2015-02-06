@@ -47,14 +47,10 @@ def pay_update(pay_id=0):
 ###############################################################################
 # List
 ###############################################################################
-@app.route('/_s/pay/')
 @app.route('/pay/')
 @auth.login_required
 def pay_list():
   pay_dbs, pay_cursor = auth.current_user_db().get_pay_dbs()
-
-  if flask.request.path.startswith('/_s/'):
-    return util.jsonify_model_dbs(pay_dbs, pay_cursor)
 
   return flask.render_template(
       'pay/pay_list.html',
@@ -62,21 +58,16 @@ def pay_list():
       title='Pay List',
       pay_dbs=pay_dbs,
       next_url=util.generate_next_url(pay_cursor),
-      has_json=True,
     )
 
 
 ###############################################################################
 # Admin Pay List
 ###############################################################################
-@app.route('/_s/admin/pay/')
 @app.route('/admin/pay/')
 @auth.admin_required
 def admin_pay_list():
   pay_dbs, pay_cursor = model.Pay.get_dbs()
-
-  if flask.request.path.startswith('/_s/'):
-    return util.jsonify_model_dbs(pay_dbs, pay_cursor)
 
   return flask.render_template(
       'admin/pay_list.html',
@@ -84,5 +75,4 @@ def admin_pay_list():
       title='Pay List',
       pay_dbs=pay_dbs,
       next_url=util.generate_next_url(pay_cursor),
-      has_json=True,
     )

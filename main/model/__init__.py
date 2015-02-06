@@ -10,8 +10,7 @@ from .config import Config
 from .config import CONFIG_FIELDS
 
 from .user import User
-<<<<<<< HEAD
-from .pay import Pay
-=======
 from .user import USER_FIELDS
->>>>>>> bfae23693b77e6d849f92f2a95ccd66972566def
+
+from .pay import Pay
+from .pay import PAY_FIELDS

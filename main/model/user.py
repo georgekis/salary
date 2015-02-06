@@ -5,9 +5,9 @@ from __future__ import absolute_import
 from datetime import date
 import hashlib
 
-from flask.ext.restful import fields
 from google.appengine.ext import ndb
 
+from api import fields
 import model
 import util
 import config
@@ -39,7 +39,6 @@ class User(model.Base):
       }
   avatar_url = property(avatar_url_size)
 
-<<<<<<< HEAD
   @ndb.ComputedProperty
   def age(self):
     if self.birthdate:
@@ -48,21 +47,6 @@ class User(model.Base):
       return td.year - bn.year - ((td.month, td.day) < (bn.month, bn.day))
     return None
 
-  _PROPERTIES = model.Base._PROPERTIES.union({
-      'active',
-      'admin',
-      'age',
-      'auth_ids',
-      'avatar_url',
-      'email',
-      'name',
-      'permissions',
-      'username',
-      'verified',
-    })
-
-=======
->>>>>>> bfae23693b77e6d849f92f2a95ccd66972566def
   @classmethod
   def get_dbs(
       cls, admin=None, active=None, verified=None, permissions=None, **kwargs
@@ -91,14 +75,12 @@ class User(model.Base):
       )
     return not user_keys or self_key in user_keys and not user_keys[1:]
 
-<<<<<<< HEAD
   def get_pay_dbs(self, **kwargs):
     return model.Pay.get_dbs(
         ancestor=self.key,
         order=util.param('order') or '-date_for,name',
         **kwargs
       )
-=======
 
 USER_FIELDS = {
     'active': fields.Boolean,
@@ -113,4 +95,3 @@ USER_FIELDS = {
   }
 
 USER_FIELDS.update(model.BASE_FIELDS)
->>>>>>> bfae23693b77e6d849f92f2a95ccd66972566def

@@ -22,15 +22,12 @@ app.jinja_env.globals.update(
 
 from control import user
 from control import admin
+from control import pay
 from control import profile
 from control import test
 import auth
 import model
 import task
-<<<<<<< HEAD
-import pay
-import test
-=======
 
 
 from api import helpers as restful
@@ -40,7 +37,6 @@ from api.v1 import auth_api
 from api.v1 import config_api
 from api.v1 import user_api
 
->>>>>>> bfae23693b77e6d849f92f2a95ccd66972566def
 
 if config.DEVELOPMENT:
   from werkzeug import debug
