@@ -11,8 +11,8 @@ import util
 
 class Pay(model.Base):
   name = ndb.StringProperty(default='')
-  date_for = ndb.DateTimeProperty(auto_now_add=True)
-  date_paid = ndb.DateTimeProperty(auto_now_add=True)
+  date_for = ndb.DateProperty(auto_now_add=True)
+  date_paid = ndb.DateProperty(auto_now_add=True)
   code = ndb.StringProperty(default='')
   amount = ndb.FloatProperty(default=0.0)
 
