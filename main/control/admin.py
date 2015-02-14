@@ -113,7 +113,7 @@ def admin_auth():
       title='Auth Config',
       html_class='admin-auth',
       form=form,
-      api_url=flask.url_for('api.auth'),
+      api_url=flask.url_for('api.config'),
     )
 
 

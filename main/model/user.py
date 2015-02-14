@@ -75,23 +75,25 @@ class User(model.Base):
       )
     return not user_keys or self_key in user_keys and not user_keys[1:]
 
+<<<<<<< HEAD
   def get_pay_dbs(self, **kwargs):
     return model.Pay.get_dbs(
         ancestor=self.key,
         order=util.param('order') or '-date_for,name',
         **kwargs
       )
+=======
+  FIELDS = {
+      'active': fields.Boolean,
+      'admin': fields.Boolean,
+      'auth_ids': fields.List(fields.String),
+      'avatar_url': fields.String,
+      'email': fields.String,
+      'name': fields.String,
+      'permissions': fields.List(fields.String),
+      'username': fields.String,
+      'verified': fields.Boolean,
+    }
+>>>>>>> 3f71d481b85f31ef51cffcd6836938497525396e
 
-USER_FIELDS = {
-    'active': fields.Boolean,
-    'admin': fields.Boolean,
-    'auth_ids': fields.String,
-    'avatar_url': fields.String,
-    'email': fields.String,
-    'name': fields.String,
-    'permissions': fields.String,
-    'username': fields.String,
-    'verified': fields.Boolean,
-  }
-
-USER_FIELDS.update(model.BASE_FIELDS)
+  FIELDS.update(model.Base.FIELDS)

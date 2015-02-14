@@ -1,16 +1,13 @@
 # coding: utf-8
 
 from .base import Base
-from .base import BASE_FIELDS
-
 from .config_auth import ConfigAuth
-from .config_auth import CONFIG_AUTH_FIELDS
-
 from .config import Config
-from .config import CONFIG_FIELDS
-
 from .user import User
+<<<<<<< HEAD
 from .user import USER_FIELDS
 
 from .pay import Pay
 from .pay import PAY_FIELDS
+=======
+>>>>>>> 3f71d481b85f31ef51cffcd6836938497525396e
