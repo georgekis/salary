@@ -32,14 +32,14 @@ class Pay(model.Base):
       )
 
 
-PAY_FIELDS = {
-  'amount': fields.Float,
-  'amount_format': fields.String,
-  'code': fields.String,
-  'date_for': fields.DateTimeField,
-  'date_paid': fields.DateTimeField,
-  'is_positive': fields.Boolean,
-  'name': fields.String,
-}
+  FIELDS = {
+    'amount': fields.Float,
+    'amount_format': fields.String,
+    'code': fields.String,
+    'date_for': fields.DateTime,
+    'date_paid': fields.DateTime,
+    'is_positive': fields.Boolean,
+    'name': fields.String,
+  }
 
-PAY_FIELDS.update(model.BASE_FIELDS)
+  FIELDS.update(model.Base.FIELDS)
