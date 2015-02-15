@@ -16,11 +16,6 @@ app.jinja_env.globals.update(
     update_query_argument=util.update_query_argument,
   )
 
-from control import user
-from control import admin
-from control import pay
-from control import profile
-from control import test
 import auth
 import control
 import model
