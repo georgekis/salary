@@ -17,6 +17,7 @@ class PayUpdateForm(wtf.Form):
   date_paid = wtforms.DateField('Date Paid', [wtforms.validators.required()])
   code = wtforms.StringField('Code', [wtforms.validators.required()])
   amount = wtforms.FloatField('Amount', [wtforms.validators.required()])
+  add_more = wtforms.BooleanField('Add more', [wtforms.validators.optional()], default=True)
 
 
 @app.route('/pay/<int:pay_id>/', methods=['GET', 'POST'])
@@ -34,6 +35,8 @@ def pay_update(pay_id=0):
   if form.validate_on_submit():
     form.populate_obj(pay_db)
     pay_db.put()
+    if form.add_more.data:
+      return flask.redirect(flask.url_for('pay_update'))
     return flask.redirect(flask.url_for('pay_list'))
   return flask.render_template(
       'pay/pay_update.html',
