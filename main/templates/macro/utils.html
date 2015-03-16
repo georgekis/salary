@@ -28,8 +28,13 @@
 
 # macro back_link(title, route)
   <small>
-    <a href="{{url_for(route, **kwargs)}}" class="text-muted" title="{{title}}"><span class="fa fa-fw fa-chevron-left"></span></a>
+    <a href="{{url_for(route, **kwargs)}}" class="text-muted" title="{{title}}"><span class="fa fa-fw fa-chevron-left", {{admin_link}}></span></a>
   </small>
+# endmacro
+
+
+# macro back_link_title(title, route)
+  <a href="{{url_for(route, **kwargs)}}" class="text-muted" title="Back to {{route}}">{{title}}</a>
 # endmacro
 
 

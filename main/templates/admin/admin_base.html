@@ -5,7 +5,7 @@
   <div class="page-header">
     <h1>
       {{utils.back_link('Back', back_url_for or 'admin')}}
-      {{title}}
+      {{utils.back_link_title(title, back_url_for or 'admin')}}
     </h1>
 
     # if html_class in ['admin-config', 'admin-auth']
