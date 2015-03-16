@@ -15,14 +15,16 @@
           {{forms.date_field(form.date_for)}}
           {{forms.date_field(form.date_paid)}}
           {{forms.number_field(form.amount)}}
+          # if pay_db.key.id()
           <button type="submit" class="btn btn-primary btn-block btn-loading" data-loading-text="Please wait..">
-            # if pay_db.key.id()
-              Update
-            # else
-              Create
-            # endif
+            Update
+          </button>
+          # else
+          <button type="submit" class="btn btn-primary btn-block btn-loading" data-loading-text="Please wait..">
+            Create
           </button>
           {{forms.checkbox_field(form.add_more)}}
+          # endif
         </fieldset>
       </form>
     </div>
